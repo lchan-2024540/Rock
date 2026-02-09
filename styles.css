@@ -1,0 +1,575 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Impact', 'Arial Black', sans-serif;
+    background: #000;
+    color: #fff;
+    min-height: 100vh;
+}
+
+/* Login Page Styles */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    background: radial-gradient(circle at center, #1a0000 0%, #000 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.login-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 50px,
+            rgba(255, 0, 0, 0.03) 50px,
+            rgba(255, 0, 0, 0.03) 51px
+        );
+    pointer-events: none;
+}
+
+.login-box {
+    background: #0a0a0a;
+    border: 3px solid #ff0000;
+    box-shadow: 
+        0 0 20px rgba(255, 0, 0, 0.5),
+        inset 0 0 50px rgba(255, 0, 0, 0.1);
+    padding: 40px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+    z-index: 1;
+}
+
+.login-box::before {
+    content: '⚡';
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 60px;
+    color: #ff0000;
+    text-shadow: 0 0 20px #ff0000;
+}
+
+.login-box h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #ff0000;
+    font-size: 2.5em;
+    text-shadow: 
+        0 0 10px #ff0000,
+        0 0 20px #ff0000,
+        2px 2px 4px rgba(0, 0, 0, 0.8);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #ddd;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ff0000;
+    border-radius: 5px;
+    background: #000;
+    color: #fff;
+    font-size: 16px;
+    transition: all 0.3s;
+}
+
+.input-group input:focus {
+    outline: none;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.6);
+    border-color: #ff0000;
+}
+
+.input-group input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.login-btn {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #ff0000 0%, #8b0000 100%);
+    border: 2px solid #ff0000;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+}
+
+.login-btn:hover {
+    background: linear-gradient(135deg, #8b0000 0%, #ff0000 100%);
+    box-shadow: 0 0 25px rgba(255, 0, 0, 0.8);
+    transform: scale(1.02);
+}
+
+.error-message {
+    color: #ff6b6b;
+    text-align: center;
+    margin-top: 15px;
+    display: none;
+}
+
+.login-hint {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: #999;
+}
+
+/* Main Page Styles */
+.main-page {
+    background: #000;
+    min-height: 100vh;
+}
+
+header {
+    background: linear-gradient(135deg, #1a0000 0%, #000 50%, #1a0000 100%);
+    border-bottom: 3px solid #ff0000;
+    padding: 25px 20px;
+    box-shadow: 0 5px 20px rgba(255, 0, 0, 0.5);
+    position: relative;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        #ff0000 25%, 
+        #ff0000 75%, 
+        transparent 100%);
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    font-size: 2.5em;
+    color: #ff0000;
+    text-shadow: 
+        0 0 10px #ff0000,
+        0 0 20px #ff0000,
+        3px 3px 6px rgba(0, 0, 0, 0.8);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.logout-btn {
+    padding: 12px 25px;
+    background: #000;
+    border: 2px solid #ff0000;
+    border-radius: 5px;
+    color: #ff0000;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.logout-btn:hover {
+    background: #ff0000;
+    color: #000;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
+    transform: scale(1.05);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.intro {
+    text-align: center;
+    margin-bottom: 50px;
+    padding: 30px;
+    background: radial-gradient(circle at center, rgba(255, 0, 0, 0.1) 0%, transparent 70%);
+}
+
+.intro h2 {
+    font-size: 3em;
+    margin-bottom: 15px;
+    color: #ff0000;
+    text-shadow: 
+        0 0 15px #ff0000,
+        0 0 30px #ff0000,
+        3px 3px 8px rgba(0, 0, 0, 0.9);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.intro p {
+    font-size: 1.3em;
+    color: #ccc;
+    font-family: Arial, sans-serif;
+    letter-spacing: 1px;
+}
+
+.bands-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.band-card {
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a0a0a 100%);
+    border: 2px solid #ff0000;
+    border-radius: 10px;
+    padding: 30px;
+    transition: all 0.3s;
+    box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.band-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 0, 0, 0.1) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.band-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 
+        0 10px 30px rgba(255, 0, 0, 0.6),
+        0 0 40px rgba(255, 0, 0, 0.4);
+    border-color: #ff3333;
+}
+
+.band-card:hover::before {
+    opacity: 1;
+}
+
+.band-card h3 {
+    color: #ff0000;
+    font-size: 2em;
+    margin-bottom: 15px;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+}
+
+.band-card .genre {
+    display: inline-block;
+    background: linear-gradient(135deg, #ff0000 0%, #8b0000 100%);
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    margin-bottom: 20px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+    position: relative;
+    z-index: 1;
+}
+
+.band-card .description {
+    line-height: 1.8;
+    color: #ddd;
+    margin-bottom: 20px;
+    font-family: Arial, sans-serif;
+    position: relative;
+    z-index: 1;
+}
+
+.band-card .formed {
+    color: #999;
+    font-size: 0.9em;
+    font-style: italic;
+    margin-bottom: 25px;
+    font-family: Arial, sans-serif;
+    position: relative;
+    z-index: 1;
+}
+
+.band-btn {
+    display: inline-block;
+    width: 100%;
+    padding: 12px 20px;
+    background: linear-gradient(135deg, #ff0000 0%, #8b0000 100%);
+    border: 2px solid #ff0000;
+    border-radius: 5px;
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.3s;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
+}
+
+.band-btn:hover {
+    background: linear-gradient(135deg, #8b0000 0%, #ff0000 100%);
+    box-shadow: 0 0 25px rgba(255, 0, 0, 0.8);
+    transform: scale(1.05);
+}
+
+footer {
+    background: #000;
+    border-top: 2px solid #ff0000;
+    text-align: center;
+    padding: 30px;
+    margin-top: 50px;
+    color: #666;
+    font-family: Arial, sans-serif;
+}
+
+.back-btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background: linear-gradient(135deg, #ff0000 0%, #8b0000 100%);
+    border: 2px solid #ff0000;
+    border-radius: 5px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.3s;
+    margin: 20px 0;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
+}
+
+.back-btn:hover {
+    background: linear-gradient(135deg, #8b0000 0%, #ff0000 100%);
+    box-shadow: 0 0 25px rgba(255, 0, 0, 0.8);
+    transform: scale(1.05);
+}
+
+/* Band Detail Page */
+.band-detail {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 40px;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a0a0a 100%);
+    border: 3px solid #ff0000;
+    border-radius: 10px;
+    box-shadow: 0 10px 40px rgba(255, 0, 0, 0.4);
+}
+
+.band-detail h1 {
+    color: #ff0000;
+    font-size: 3.5em;
+    margin-bottom: 20px;
+    text-shadow: 
+        0 0 15px #ff0000,
+        0 0 30px #ff0000;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.band-detail .genre-tag {
+    display: inline-block;
+    background: linear-gradient(135deg, #ff0000 0%, #8b0000 100%);
+    padding: 10px 25px;
+    border-radius: 25px;
+    font-size: 1.1em;
+    margin-bottom: 20px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+}
+
+.band-detail .formed-info {
+    font-style: italic;
+    color: #999;
+    margin-bottom: 30px;
+    font-size: 1.1em;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+.band-detail h2 {
+    color: #ff0000;
+    font-size: 2em;
+    margin-top: 35px;
+    margin-bottom: 15px;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+    letter-spacing: 2px;
+    border-bottom: 2px solid #ff0000;
+    padding-bottom: 10px;
+}
+
+.band-detail p {
+    line-height: 1.9;
+    color: #ddd;
+    margin-bottom: 20px;
+    font-size: 1.1em;
+    font-family: Arial, sans-serif;
+}
+
+.band-detail ul {
+    margin-left: 30px;
+    margin-bottom: 25px;
+}
+
+.band-detail li {
+    line-height: 2;
+    color: #ddd;
+    font-size: 1.05em;
+    margin-bottom: 10px;
+    font-family: Arial, sans-serif;
+}
+
+.band-detail li::marker {
+    color: #ff0000;
+}
+
+.band-detail li::marker {
+    color: #ff0000;
+}
+
+.band-logo {
+    text-align: center;
+    margin: 30px 0;
+    padding: 30px;
+    background: rgba(255, 0, 0, 0.05);
+    border-radius: 10px;
+    border: 2px dashed #ff0000;
+}
+
+.band-logo img {
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 0 20px rgba(255, 0, 0, 0.3));
+}
+
+.band-logo p {
+    color: #666;
+    font-size: 0.9em;
+    margin-top: 15px;
+    font-style: italic;
+}
+
+.songs-section {
+    margin-top: 40px;
+    padding: 30px;
+    background: linear-gradient(135deg, rgba(255, 0, 0, 0.1) 0%, rgba(139, 0, 0, 0.1) 100%);
+    border: 2px solid #ff0000;
+    border-radius: 10px;
+}
+
+.songs-list {
+    list-style: none;
+    margin: 20px 0;
+    padding: 0;
+}
+
+.songs-list li {
+    margin-bottom: 15px;
+}
+
+.song-link {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a0a0a 100%);
+    border: 2px solid #ff0000;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #fff;
+    transition: all 0.3s;
+    font-size: 1.1em;
+}
+
+.song-link:hover {
+    background: linear-gradient(135deg, #ff0000 0%, #8b0000 100%);
+    transform: translateX(10px);
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
+}
+
+.song-link::before {
+    content: '▶';
+    margin-right: 15px;
+    font-size: 1.2em;
+    color: #ff0000;
+}
+
+.song-link:hover::before {
+    color: #fff;
+}
+
+.song-number {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background: #ff0000;
+    color: #000;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 30px;
+    font-weight: bold;
+    margin-right: 15px;
+}
+
+@media (max-width: 768px) {
+    .bands-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    header h1 {
+        font-size: 1.5em;
+    }
+    
+    .intro h2 {
+        font-size: 2em;
+    }
+    
+    .band-logo img {
+        max-width: 200px;
+    }
+}
